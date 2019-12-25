@@ -1,0 +1,44 @@
+<app-carousel></app-carousel>
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="title-section mb-5 col-12">
+        <h2 class="text-uppercase">Popular Products</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        *ngFor="let product of products"
+        class="col-lg-4 col-md-6 item-entry mb-4"
+      >
+        <a
+          [routerLink]="[
+            '/product',
+            product.catalog.slug,
+            product.slug,
+            product.id
+          ]"
+          class="product-item md-height bg-gray d-block"
+        >
+          <img
+            src="https://localhost:5001/images/{{ product.image }}"
+            alt="Image"
+            class="img-fluid"
+          />
+        </a>
+        <h2 class="item-title">
+          <a
+            [routerLink]="[
+              '/product',
+              product.catalog.slug,
+              product.slug,
+              product.id
+            ]"
+            >{{ product.name }}</a
+          >
+        </h2>
+        <strong class="item-price">${{ product.price }}.00</strong>
+      </div>
+    </div>
+  </div>
+</div>

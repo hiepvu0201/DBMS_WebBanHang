@@ -1,0 +1,120 @@
+<div class="form-edit" *ngIf="postOld">
+  <h3 class="form-edit__heading">{{ title }}</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title" />
+        <mat-hint>Title post</mat-hint>
+
+        <!-- MESSAGE VALIDATION -->
+        <mat-error *ngIf="form.get('title')">
+          Please enter a post title
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Short Description</mat-label>
+        <input
+          matInput
+          placeholder="Short Description"
+          formControlName="shortDescription"
+        />
+        <mat-hint>Short descripton post</mat-hint>
+
+        <!-- MESSAGE VALIDATION -->
+        <mat-error *ngIf="form.get('shortDescription')">
+          Please enter a post short description
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button mat-stroked-button type="button" (click)="fileImage.click()">
+        Upload Image
+      </button>
+      <input
+        type="file"
+        name="image"
+        #fileImage
+        (change)="onUploadImage($event)"
+      />
+    </p>
+
+    <!-- IMAGE PREVIEW -->
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" alt="" />
+    </div>
+
+    <!-- IMAGE PREVIEW EDIT -->
+    <div class="image-preview" *ngIf="!imagePreview && postOld">
+      <img src="https://localhost:5001/images/{{ postOld.image }}" alt="" />
+    </div>
+
+    <mat-form-field>
+      <mat-label>Select an categories</mat-label>
+      <mat-select
+        formControlName="categoryId"
+        [(value)]="selectedValueCategory"
+      >
+        <mat-option
+          *ngFor="let category of listcategories"
+          [value]="category.id"
+        >
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <editor
+      apiKey="839az0icq8xq5tv9z57kntl3yjudk6zp5b6cckv0km7y0zv3"
+      formControlName="content"
+      name="content"
+      [init]="{
+        height: 500,
+        menubar: false,
+        plugins: [
+          'image code',
+          'advlist autolink lists link image charmap print preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table paste code help wordcount'
+        ],
+        toolbar: [
+          'undo redo | image code',
+          'undo redo | formatselect | bold italic backcolor | \
+          alignleft aligncenter alignright alignjustify | \
+          bullist numlist outdent indent | removeformat | help'
+        ],
+        images_upload_url: 'https://localhost:5001/api/upload',
+        images_upload_base_path: 'https://localhost:5001/images'
+      }"
+    >
+    </editor>
+
+    <p class="mt-5">
+      <mat-label style="margin-bottom: 20px;">Visibility</mat-label>
+      <br /><br />
+      <mat-radio-group formControlName="visibility" required>
+        <mat-radio-button [value]="true" style="margin-right: 20px;"
+          >Show</mat-radio-button
+        >
+        <mat-radio-button [value]="false">Hidden</mat-radio-button>
+      </mat-radio-group>
+    </p>
+
+    <!-- SUBMIT -->
+    <button
+      mat-flat-button
+      type="submit"
+      class="btn-edit"
+      [disabled]="!form.valid"
+    >
+      {{ title }}
+    </button>
+    <button mat-flat-button type="button" class="btn-cancel" (click)="goBack()">
+      Cancel
+    </button>
+  </form>
+</div>

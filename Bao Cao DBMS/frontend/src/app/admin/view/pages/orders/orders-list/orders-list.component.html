@@ -1,0 +1,104 @@
+<div class="table">
+  <h3 class="table__heading">Orders</h3>
+
+  <mat-form-field>
+    <input matInput placeholder="Search orders" #input />
+  </mat-form-field>
+
+  <!-- TABLE -->
+  <mat-table
+    class="catalogs-table mat-elevation-z8"
+    [dataSource]="dataSource"
+    matSort
+    matSortDirection="asc"
+    matSortDisableClear
+  >
+    <ng-container matColumnDef="Id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >OrderId</mat-header-cell
+      >
+      <mat-cell *matCellDef="let order">{{ order.orderId }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="First Name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >First Name</mat-header-cell
+      >
+      <mat-cell class="description-cell" *matCellDef="let order">{{
+        order.firstName
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Last Name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Last Name</mat-header-cell
+      >
+      <mat-cell class="description-cell" *matCellDef="let order">{{
+        order.lastName
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let order">{{
+        order.phone
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let order">{{
+        order.email
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Address">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Address</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let order">{{
+        order.address
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="City">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let order">{{
+        order.city
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <mat-header-cell
+        *matHeaderCellDef
+        style="display:flex; justify-content:center;"
+        >Action</mat-header-cell
+      >
+      <mat-cell
+        class="duration-cell"
+        *matCellDef="let order"
+        style="display:flex; justify-content:center;"
+      >
+        <button
+          [routerLink]="['detail', order.orderId]"
+          class="btn btn-edit"
+          mat-flat-button
+          title="Detail"
+        >
+          <mat-icon>details</mat-icon>
+        </button>
+      </mat-cell>
+      >
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    [length]="ordersCount"
+    [pageSize]="3"
+    [pageSizeOptions]="[3, 6, 9]"
+  ></mat-paginator>
+</div>

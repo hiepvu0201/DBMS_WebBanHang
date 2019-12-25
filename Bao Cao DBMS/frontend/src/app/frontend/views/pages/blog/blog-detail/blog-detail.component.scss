@@ -1,0 +1,28 @@
+a {
+  color: #ee4266;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.single-blog {
+  .blog-post {
+    .post-thumb img {
+      width: 100%;
+    }
+
+    .post-meta {
+      list-style: none;
+      display: flex;
+      padding: 0;
+
+      li {
+        margin-right: 2rem;
+      }
+
+      span {
+        color: #555;
+      }
+    }
+  }
+}

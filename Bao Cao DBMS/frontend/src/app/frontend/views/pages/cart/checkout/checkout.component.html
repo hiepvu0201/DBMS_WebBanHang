@@ -1,0 +1,176 @@
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="">Home</a> <span class="mx-2 mb-0">/</span>
+        <a routerLink="/cart">Cart</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Checkout</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-5 mb-md-0">
+        <h2 class="h3 mb-3 text-black">Billing Details</h2>
+        <div class="p-3 p-lg-5 border">
+          <!-- // -->
+
+          <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group row">
+              <!-- FIRT NAME -->
+              <div class="col-md-6">
+                <label for="c_fname" class="text-black"
+                  >First Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_fname"
+                  name="firstName"
+                  ngModel
+                  required
+                />
+              </div>
+
+              <!-- LAST NAME -->
+              <div class="col-md-6">
+                <label for="c_lname" class="text-black"
+                  >Last Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_lname"
+                  name="lastName"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- PHONE -->
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_phone" class="text-black">Phone </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_phone"
+                  name="phone"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <!-- END PHONE -->
+
+            <!-- EMAIL -->
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_email" class="text-black">Email </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="c_email"
+                  name="email"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <!-- END EMAIL -->
+
+            <!-- ADDRESS -->
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_address" class="text-black">Address </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_address"
+                  name="address"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <!-- END ADDRESS -->
+
+            <!-- CITY -->
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_city" class="text-black">City </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="c_city"
+                  name="city"
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <!-- END CITY -->
+
+            <!-- ORDER NOTES -->
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_order_notes" class="text-black"
+                  >Order Notes</label
+                >
+                <textarea
+                  name="note"
+                  id="c_order_notes"
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                  placeholder="Write your notes here..."
+                  ngModel
+                ></textarea>
+              </div>
+            </div>
+            <!-- END ORDER NOTES -->
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <h2 class="h3 mb-3 text-black">Your Order</h2>
+            <div class="p-3 p-lg-5 border">
+              <table class="table site-block-order-table mb-5">
+                <thead>
+                  <th>Product</th>
+                  <th>Total</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of productSelected">
+                    <td>
+                      {{ product.name }} <strong class="mx-2">x</strong>
+                      {{ product.quantity }}
+                    </td>
+                    <td>${{ product.quantity * product.price }}.00</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="form-group">
+                <button
+                  (click)="form.ngSubmit.emit()"
+                  [disabled]="!form.form.valid"
+                  class="btn btn-primary btn-lg btn-block"
+                >
+                  Place Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </form> -->
+  </div>
+</div>

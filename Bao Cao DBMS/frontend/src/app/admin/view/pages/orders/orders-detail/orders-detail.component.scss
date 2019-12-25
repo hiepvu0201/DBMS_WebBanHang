@@ -1,0 +1,19 @@
+.bill-detail {
+  background-color: #fff;
+
+  &__heading {
+    background-color: #3f51b5;
+    color: #fff;
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+  }
+
+  &__info {
+    padding: 3rem;
+    border-bottom: 5px solid #3f51b5;
+  }
+
+  &__products {
+    padding: 3rem;
+  }
+}

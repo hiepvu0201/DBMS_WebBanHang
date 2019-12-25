@@ -1,0 +1,78 @@
+<mat-spinner
+  style="margin:5rem auto;"
+  mode="indeterminate"
+  *ngIf="isLoading"
+></mat-spinner>
+
+<div class="custom-border-bottom py-3" *ngIf="!isLoading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="">Home</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Shop</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3 order-1 mb-5 mb-md-0">
+        <div class="border p-4 rounded mb-4">
+          <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+          <ul class="list-unstyled mb-0">
+            <li *ngFor="let category of categories" class="mb-1">
+              <a
+                [routerLink]="['/blog', category.slug, category.id]"
+                class="d-flex"
+                ><span>{{ category.name }}</span>
+                <span class="text-black ml-auto">
+                  ({{ category.postCount }})
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9 order-2">
+        <div class="row mb-5">
+          <div class="single-blog">
+            <div class="blog-post">
+              <h1 class="title post-title">Made by heart with great hands</h1>
+              <ul class="post-meta">
+                <li>
+                  <span>
+                    In:
+                    <a
+                      [routerLink]="[
+                        '/blog',
+                        post.category.slug,
+                        post.category.id
+                      ]"
+                    >
+                      {{ post.category.name }}
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>Created At: {{ post.createdAt }}</span>
+                </li>
+              </ul>
+              <div class="post-thumb">
+                <img
+                  src="https://localhost:5001/images/{{ post.image }}"
+                  alt="Image Blog"
+                />
+              </div>
+              <div
+                class="post-fulltext post-intro mt-4"
+                [innerHTML]="post.content"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

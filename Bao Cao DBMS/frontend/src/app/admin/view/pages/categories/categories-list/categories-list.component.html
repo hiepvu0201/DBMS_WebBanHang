@@ -1,0 +1,114 @@
+<div class="table">
+  <h3 class="table__heading">Categories</h3>
+
+  <mat-form-field>
+    <input matInput placeholder="Search categories" #input />
+  </mat-form-field>
+
+  <button [routerLink]="['add']" class="btn-add" mat-flat-button>
+    Add
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <mat-table
+    class="catalogs-table mat-elevation-z8"
+    [dataSource]="dataSource"
+    matSort
+    matSortDirection="asc"
+    matSortDisableClear
+  >
+    <ng-container matColumnDef="Id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let catalogs">{{ catalogs.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell class="description-cell" *matCellDef="let catalogs">{{
+        catalogs.name
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Visibility">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Visibility</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let catalogs">
+        <mat-icon class="active" *ngIf="catalogs.visibility">
+          check_circle
+        </mat-icon>
+        <mat-icon *ngIf="!catalogs.visibility">
+          check_circle
+        </mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="PostCount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Post Count</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let catalogs">{{
+        catalogs.postCount
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CreatedAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Created At</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let catalogs">{{
+        catalogs.createdAt
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="UpdatedAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Updated At</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let catalogs">{{
+        catalogs.updatedAt
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <mat-header-cell
+        *matHeaderCellDef
+        style="display:flex; justify-content:center;"
+        >Action</mat-header-cell
+      >
+      <mat-cell
+        class="duration-cell"
+        *matCellDef="let catalogs"
+        style="display:flex; justify-content:center;"
+      >
+        <button
+          [routerLink]="['edit', catalogs.id]"
+          class="btn btn-edit"
+          mat-flat-button
+          title="Edit"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          class="btn btn-delete"
+          mat-flat-button
+          title="Delete"
+          (click)="onDelete(catalogs.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+      >
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    [length]="categoriesCount"
+    [pageSize]="3"
+    [pageSizeOptions]="[3, 6, 9]"
+  ></mat-paginator>
+</div>

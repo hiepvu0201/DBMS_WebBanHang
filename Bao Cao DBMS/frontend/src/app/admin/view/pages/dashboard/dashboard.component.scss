@@ -1,0 +1,40 @@
+.dashboard {
+  background-color: #fff;
+  padding: 3rem;
+  -webkit-box-shadow: 7px 2px 22px -10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 2px 22px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 7px 2px 22px -10px rgba(0, 0, 0, 0.75);
+
+  .cart-total {
+    display: flex;
+    height: 6rem;
+    -webkit-box-shadow: 7px 2px 22px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 2px 22px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 7px 2px 22px -10px rgba(0, 0, 0, 0.75);
+
+    &__icon {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    &__info {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        margin: 0;
+      }
+
+      p {
+        color: #b5b0b0;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

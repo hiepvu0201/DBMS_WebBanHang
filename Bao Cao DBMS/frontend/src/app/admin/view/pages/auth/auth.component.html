@@ -1,0 +1,86 @@
+<div class="login">
+  <div class="login-header">
+    <div class="login-header__left">
+      <mat-icon>store</mat-icon>
+      <p class="title">Administration</p>
+    </div>
+
+    <mat-icon>https</mat-icon>
+  </div>
+
+  <div class="login-form">
+    <div class="login-form__title">
+      {{ title }}
+    </div>
+    <form (ngSubmit)="onLogin()" #form="ngForm" id="form-login" *ngIf="!flag">
+      <div class="form-group">
+        <label for="username" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-input"
+          name="username"
+          id="username"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-input"
+          name="password"
+          id="password"
+          ngModel
+          required
+        />
+      </div>
+      <button class="btn-login" type="submit">Login</button>
+    </form>
+
+    <form (ngSubmit)="onRegister()" #form="ngForm" id="form-login" *ngIf="flag">
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-input"
+          name="name"
+          id="name"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="username" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-input"
+          name="username"
+          id="username"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-input"
+          name="password"
+          id="password"
+          ngModel
+          required
+        />
+      </div>
+      <button class="btn-login" type="submit">{{ title }}</button>
+    </form>
+    <button
+      (click)="onClickFlag()"
+      class="btn-outline-primary mt-3 float-right"
+      type="button"
+    >
+      <span *ngIf="title === 'Register'">Login</span>
+      <span *ngIf="title === 'Login'">Register</span>
+    </button>
+  </div>
+</div>

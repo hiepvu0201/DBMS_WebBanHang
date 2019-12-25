@@ -1,0 +1,199 @@
+<!-- <div class="custom-border-bottom py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="">Home</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Blog List</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="post-list">
+  <div class="container">
+    <div *ngFor="let post of posts" class="post-item">
+      <div class="post-title">
+        <h3>{{ post.title }}</h3>
+      </div>
+      <div class="post-thumb">
+        <img
+          src="https://localhost:5001/images/{{ post.image }}"
+          [alt]="post.name"
+        />
+      </div>
+      <div class="post-short-desc pt-2 pb-2">
+        {{ post.shortDescription }}
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <a [routerLink]="['/blog', post.category.slug, post.slug, post.id]">Read More >></a>
+        </div>
+        <div class="col-md-6 text-right">
+          <a routerLink=".">Date {{ post.createdAt }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="custom-border-bottom py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="">Home</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Shop</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3 order-1 mb-5 mb-md-0">
+        <div class="border p-4 rounded mb-4">
+          <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+          <ul class="list-unstyled mb-0">
+            <li *ngFor="let category of categories" class="mb-1">
+              <a
+                [routerLink]="['/blog', category.slug, category.id]"
+                class="d-flex"
+                ><span>{{ category.name }}</span>
+                <span class="text-black ml-auto">
+                  ({{ category.postCount }})
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9 order-2">
+        <div class="row align">
+          <div class="col-md-12 mb-5">
+            <div class="float-md-left">
+              <h2 class="text-black h5">Blog All</h2>
+            </div>
+            <div class="d-flex">
+              <div class="dropdown mr-1 ml-md-auto"></div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-white btn-sm dropdown-toggle px-4"
+                  id="dropdownMenuReference"
+                  data-toggle="dropdown"
+                >
+                  Reference
+                </button>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuReference"
+                >
+                  <a
+                    (click)="onSort('title', 'asc')"
+                    class="dropdown-item"
+                    routerLink="."
+                    >Title, low to high</a
+                  >
+                  <a
+                    (click)="onSort('title', 'desc')"
+                    class="dropdown-item"
+                    routerLink="."
+                    >Title, high to low</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div
+            class="item col-sm-6 col-md-6 col-lg-6 col-xs-12"
+            *ngFor="let post of posts"
+          >
+            <div class="blog-post">
+              <div class="post-thumb">
+                <a
+                  [routerLink]="[
+                    '/blog',
+                    post.category.slug,
+                    post.slug,
+                    post.id
+                  ]"
+                >
+                  <img
+                    src="https://localhost:5001/images/{{ post.image }}"
+                    alt=""
+                  />
+                </a>
+              </div>
+
+              <div class="post-info">
+                <h4 class="post-title">
+                  <a
+                    [routerLink]="[
+                      '/blog',
+                      post.category.slug,
+                      post.slug,
+                      post.id
+                    ]"
+                    alt="Blog Images"
+                  >
+                    {{ post.title }}
+                  </a>
+                </h4>
+
+                <ul class="post-meta">
+                  <li>
+                    <span>In:</span>
+                    <a
+                      [routerLink]="[
+                        '/blog',
+                        post.category.slug,
+                        post.category.id
+                      ]"
+                    >
+                      {{ post.category.name }}
+                    </a>
+                  </li>
+                  <li><span>Posted: </span>{{ post.createdAt }}</li>
+                </ul>
+
+                <div class="post-intro">
+                  <p>{{ post.shortDescription }}</p>
+                </div>
+
+                <a
+                  class="btn post-readmore"
+                  [routerLink]="[
+                    '/blog',
+                    post.category.slug,
+                    post.slug,
+                    post.id
+                  ]"
+                  >Read more
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGINATOR -->
+        <!-- <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

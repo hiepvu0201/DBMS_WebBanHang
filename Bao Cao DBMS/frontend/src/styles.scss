@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html body {
+  width: 100%;
+  height: 100%;
+}
+
+mat-icon.active {
+  color: #3f51b5;
+}
+
+.table {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+
+  &__heading {
+    font-size: 30px;
+    color: #3f51b5;
+  }
+}
+
+.mat-form-field {
+  margin-right: 20px;
+}
+
+mat-cell {
+  img {
+    height: 80px;
+  }
+}
+
+.btn-add {
+  background-color: #3f51b5;
+  color: white;
+  float: right;
+}
+
+.btn {
+  color: #fff;
+}
+
+.btn-edit {
+  color: blue;
+}
+
+.btn-delete {
+  color: red;
+}
+
+// FORM EDIT
+.form-edit {
+  padding: 20px 50px;
+  background-color: #fff;
+  border-radius: 5px;
+
+  &__heading {
+    font-size: 30px;
+    color: #3f51b5;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .btn-edit {
+    background-color: #3f51b5;
+    color: #fff;
+  }
+}

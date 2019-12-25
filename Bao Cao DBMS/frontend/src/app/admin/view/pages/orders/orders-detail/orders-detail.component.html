@@ -1,0 +1,72 @@
+<div class="bill-detail" *ngIf="bills">
+  <div class="row no-gutters">
+    <div class="col-md-12">
+      <div class="bill-detail__heading">
+        <h3>Bill Detail</h3>
+      </div>
+    </div>
+  </div>
+  <div class="bill-detail__info">
+    <div class="row">
+      <div class="col-md-3">
+        <div>
+          <span class="text-muted">First Name </span>
+          <br />
+          <span class="lead font-weight-bold">{{ bills[0].firstName }}</span>
+        </div>
+        <div>
+          <span class="text-muted">Last Name </span>
+          <br />
+          <span class="lead font-weight-bold">{{ bills[0].lastName }}</span>
+        </div>
+        <div>
+          <span class="text-muted">Phone</span>
+          <br />
+          <span class="lead font-weight-bold">{{ bills[0].phone }}</span>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+          <span class="text-muted">Address </span>
+          <br />
+          <span class="lead font-weight-bold">{{ bills[0].address }}</span>
+        </div>
+        <div>
+          <span class="text-muted">City </span>
+          <br />
+          <span class="lead font-weight-bold">{{ bills[0].city }}</span>
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <span class="text-muted">Total Price </span>
+        <br />
+        <span
+          class="lead font-weight-bold"
+          style="font-size: 42px; color: #3f51b5;"
+          >{{ totalPrice | currency }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="bill-detail__products">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills">
+          <th scope="row">{{ bill.productName }}</th>
+          <td>{{ bill.price | currency }}</td>
+          <td>{{ bill.quantity }}</td>
+          <td>{{ bill.quantity * bill.price | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

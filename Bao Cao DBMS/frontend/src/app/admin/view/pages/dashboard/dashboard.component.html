@@ -1,0 +1,76 @@
+<div class="dashboard">
+  <div class="row">
+    <div class="col-3">
+      <div class="cart-total">
+        <div class="cart-total__icon bg-primary">
+          <mat-icon>format_list_bulleted</mat-icon>
+        </div>
+        <div class="cart-total__info">
+          <h3>{{ totalCatalogs }}</h3>
+          <p>Catalogs</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="cart-total">
+        <div class="cart-total__icon bg-success">
+          <mat-icon>work</mat-icon>
+        </div>
+        <div class="cart-total__info">
+          <h3>{{ totalProducts }}</h3>
+          <p>Products</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="cart-total">
+        <div class="cart-total__icon bg-danger">
+          <mat-icon>list</mat-icon>
+        </div>
+        <div class="cart-total__info">
+          <h3>{{ totalCategories }}</h3>
+          <p>Categories</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="cart-total">
+        <div class="cart-total__icon bg-info">
+          <mat-icon>description</mat-icon>
+        </div>
+        <div class="cart-total__info">
+          <h3>{{ totalPosts }}</h3>
+          <p>Posts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-6">
+      <div class="cart-total">
+        <div class="cart-total__icon bg-dark">
+          <mat-icon>shopping_cart</mat-icon>
+        </div>
+        <div class="cart-total__info">
+          <h3>{{ totalOrders }}</h3>
+          <p>Orders</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="cart-total">
+        <div class="cart-total__icon bg-success">
+          <mat-icon>attach_money</mat-icon>
+        </div>
+        <div class="cart-total__info">
+          <h3>{{ totalPrice | currency }}</h3>
+          <p>Money</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

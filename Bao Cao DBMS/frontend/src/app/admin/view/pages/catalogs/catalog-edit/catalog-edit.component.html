@@ -1,0 +1,54 @@
+<div class="form-edit" *ngIf="catalogOld">
+  <h3 class="form-edit__heading">{{ title }}</h3>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <p>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          name="name"
+          [(ngModel)]="catalogOld.name"
+          required
+        />
+        <mat-hint>Name Catalog</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-label style="margin-bottom: 20px;">Visibility</mat-label>
+      <br /><br />
+      <mat-radio-group
+        name="visibility"
+        [(ngModel)]="catalogOld.visibility"
+        required
+      >
+        <mat-radio-button
+          name="visibility"
+          [value]="true"
+          style="margin-right: 20px;"
+          [checked]="catalogOld.visibility"
+          >Show</mat-radio-button
+        >
+        <mat-radio-button
+          name="visibility"
+          [value]="false"
+          [checked]="!catalogOld.visibility"
+          >Hidden</mat-radio-button
+        >
+      </mat-radio-group>
+    </p>
+
+    <button
+      mat-flat-button
+      type="submit"
+      class="btn-edit"
+      [disabled]="!form.valid"
+    >
+      {{ title }}
+    </button>
+    <button mat-flat-button type="button" class="btn-cancel" (click)="goBack()">
+      Cancel
+    </button>
+  </form>
+</div>

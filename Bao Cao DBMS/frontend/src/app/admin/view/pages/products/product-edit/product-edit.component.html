@@ -1,0 +1,136 @@
+<div class="form-edit" *ngIf="productOld">
+  <h3 class="form-edit__heading">{{ title }}</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+        <mat-hint>Name Catalog</mat-hint>
+
+        <!-- MESSAGE VALIDATION -->
+        <mat-error *ngIf="form.get('name')">
+          Please enter a product name
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Short Description</mat-label>
+        <input
+          matInput
+          placeholder="Short Description"
+          formControlName="shortDescription"
+        />
+        <mat-hint>Short descripton catalogs</mat-hint>
+
+        <!-- MESSAGE VALIDATION -->
+        <mat-error *ngIf="form.get('shortDescription')">
+          Please enter a product short description
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Price</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Price"
+          formControlName="price"
+        />
+        <mat-hint>Price catalogs</mat-hint>
+
+        <!-- MESSAGE VALIDATION -->
+        <mat-error *ngIf="form.get('name')">
+          Please enter a product price
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button mat-stroked-button type="button" (click)="fileImage.click()">
+        Upload Image
+      </button>
+      <input
+        type="file"
+        name="image"
+        #fileImage
+        (change)="onUploadImage($event)"
+      />
+    </p>
+
+    <!-- IMAGE PREVIEW -->
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" alt="" />
+    </div>
+
+    <!-- IMAGE PREVIEW EDIT -->
+    <div class="image-preview" *ngIf="!imagePreview && productOld">
+      <img src="https://localhost:5001/images/{{ productOld.image }}" alt="" />
+    </div>
+
+    <mat-form-field class="mb-2 mt-5">
+      <mat-label>Select an catalogs</mat-label>
+      <mat-select formControlName="catalogId" [(value)]="selectedValueCatalog">
+        <mat-option *ngFor="let catalog of listCatalogs" [value]="catalog.name">
+          {{ catalog.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p>
+      <mat-label style="margin-bottom: 20px;">Visibility</mat-label>
+      <br /><br />
+      <mat-radio-group formControlName="visibility" required>
+        <mat-radio-button [value]="true" style="margin-right: 20px;"
+          >Show</mat-radio-button
+        >
+        <mat-radio-button [value]="false">Hidden</mat-radio-button>
+      </mat-radio-group>
+    </p>
+
+    <p>
+      <mat-label>Description</mat-label>
+      <editor
+        class="mt-4"
+        apiKey="839az0icq8xq5tv9z57kntl3yjudk6zp5b6cckv0km7y0zv3"
+        formControlName="description"
+        name="description"
+        [init]="{
+          height: 500,
+          menubar: false,
+          plugins: [
+            'image code',
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+          ],
+          toolbar: [
+            'undo redo | image code',
+            'undo redo | formatselect | bold italic backcolor | \
+          alignleft aligncenter alignright alignjustify | \
+          bullist numlist outdent indent | removeformat | help'
+          ],
+          images_upload_url: 'https://localhost:5001/api/upload',
+          images_upload_base_path: 'https://localhost:5001/images'
+        }"
+      >
+      </editor>
+    </p>
+
+    <!-- SUBMIT -->
+    <button
+      mat-flat-button
+      type="submit"
+      class="btn-edit mt-5"
+      [disabled]="!form.valid"
+    >
+      {{ title }}
+    </button>
+    <button mat-flat-button type="button" class="btn-cancel" (click)="goBack()">
+      Cancel
+    </button>
+  </form>
+</div>

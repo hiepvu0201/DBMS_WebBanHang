@@ -1,0 +1,138 @@
+<div class="custom-border-bottom py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a routerLink="">Home</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Shop</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-9 order-1">
+        <div class="row align">
+          <div class="col-md-12 mb-5">
+            <div class="float-md-left">
+              <h2 class="text-black h5">{{ title | uppercase }}</h2>
+            </div>
+            <div class="d-flex">
+              <div class="dropdown mr-1 ml-md-auto"></div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-white btn-sm dropdown-toggle px-4"
+                  id="dropdownMenuReference"
+                  data-toggle="dropdown"
+                >
+                  Reference
+                </button>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuReference"
+                >
+                  <a
+                    (click)="onSort('name', 'asc')"
+                    class="dropdown-item"
+                    routerLink="."
+                    >Name, A to Z</a
+                  >
+                  <a
+                    (click)="onSort('name', 'desc')"
+                    class="dropdown-item"
+                    routerLink="."
+                    >Name, Z to A</a
+                  >
+                  <div class="dropdown-divider"></div>
+                  <a
+                    (click)="onSort('price', 'asc')"
+                    class="dropdown-item"
+                    routerLink="."
+                    >Price, low to high</a
+                  >
+                  <a
+                    (click)="onSort('price', 'desc')"
+                    class="dropdown-item"
+                    routerLink="."
+                    >Price, high to low</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div
+            *ngFor="let product of products"
+            class="col-lg-6 col-md-6 item-entry mb-4"
+          >
+            <a
+              [routerLink]="[
+                '/product',
+                product.catalog.slug,
+                product.slug,
+                product.id
+              ]"
+              class="product-item md-height bg-gray d-block"
+            >
+              <img
+                src="https://localhost:5001/images/{{ product.image }}"
+                alt="Image"
+                class="img-fluid"
+              />
+            </a>
+            <h2 class="item-title">
+              <a
+                [routerLink]="[
+                  '/product',
+                  product.catalog.slug,
+                  product.slug,
+                  product.id
+                ]"
+                >{{ product.name }}</a
+              >
+            </h2>
+            <strong class="item-price">${{ product.price }}.00</strong>
+          </div>
+        </div>
+
+        <!-- PAGINATOR -->
+        <!-- <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="col-md-3 order-2 mb-5 mb-md-0">
+        <div class="border p-4 rounded mb-4">
+          <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+          <ul class="list-unstyled mb-0">
+            <li *ngFor="let catalog of catalogs" class="mb-1">
+              <a
+                [routerLink]="['/products', catalog.slug, catalog.id]"
+                class="d-flex"
+                ><span>{{ catalog.name }}</span>
+                <span class="text-black ml-auto">
+                  ({{ catalog.productCount }})
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

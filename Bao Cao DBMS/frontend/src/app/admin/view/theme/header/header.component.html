@@ -1,0 +1,22 @@
+<mat-toolbar
+  id="header"
+  color="primary"
+  [ngClass]="{ full: isToggleMenu === false }"
+  class="d-flex justify-content-between"
+>
+  <mat-icon (click)="onToggleSidebar()" id="toggle-sidebar">menu</mat-icon>
+
+  <div ngbDropdown class="d-inline-block">
+    <button
+      class="btn btn-outline-primary"
+      id="dropdownBasic1"
+      ngbDropdownToggle
+      style="color: #fff;"
+    >
+      Hi
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="logout()">Logout</button>
+    </div>
+  </div>
+</mat-toolbar>

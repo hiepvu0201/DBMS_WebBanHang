@@ -1,0 +1,46 @@
+<div class="site-navbar bg-white py-2">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <div class="site-logo">
+          <a routerLink="" class="js-logo-clone">ShopDBMS</a>
+        </div>
+      </div>
+      <div class="main-nav d-none d-lg-block">
+        <nav
+          class="site-navigation text-right text-md-center"
+          role="navigation"
+        >
+          <ul class="site-menu js-clone-nav d-none d-lg-block">
+            <li
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a routerLink="/home">Home</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/products">Shop</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/blog">Blog</a>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/about">About</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="icons">
+        <a routerLink="/cart" class="icons-btn d-inline-block bag">
+          <span class="icon-shopping-bag"></span>
+          <span class="number">{{ itemCartCount }}</span>
+        </a>
+        <a
+          routerLink="/cart"
+          class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"
+          ><span class="icon-menu"></span
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>

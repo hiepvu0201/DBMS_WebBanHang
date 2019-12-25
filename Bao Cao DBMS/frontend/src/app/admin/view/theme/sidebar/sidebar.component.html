@@ -1,0 +1,68 @@
+<mat-sidenav-container id="sidebar-container" fullscreen>
+  <mat-sidenav id="sidebar" mode="side" *ngIf="isMenuOpen" opened>
+    <div class="sidebar-header">
+      Admin
+    </div>
+    <mat-list-item class="menu">
+      <mat-list-item>
+        <button
+          routerLink="dashboard"
+          class="menu-item"
+          routerLinkActive="active"
+          mat-flat-button
+        >
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+        <button
+          routerLink="catalogs"
+          routerLinkActive="active"
+          class="menu-item"
+          mat-flat-button
+        >
+          <mat-icon>format_list_bulleted</mat-icon>
+          Catalogs
+        </button>
+        <button
+          routerLink="products"
+          routerLinkActive="active"
+          class="menu-item"
+          mat-flat-button
+        >
+          <mat-icon>work</mat-icon>
+          Products
+        </button>
+        <button
+          routerLink="categories"
+          routerLinkActive="active"
+          class="menu-item"
+          mat-flat-button
+        >
+          <mat-icon>list</mat-icon>
+          Categories
+        </button>
+        <button
+          routerLink="posts"
+          routerLinkActive="active"
+          class="menu-item"
+          mat-flat-button
+        >
+          <mat-icon>description</mat-icon>
+          Posts
+        </button>
+        <button
+          routerLink="orders"
+          routerLinkActive="active"
+          class="menu-item"
+          mat-flat-button
+        >
+          <mat-icon>shopping_cart</mat-icon>
+          Orders
+        </button>
+      </mat-list-item>
+    </mat-list-item>
+  </mat-sidenav>
+  <div id="sidebar-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

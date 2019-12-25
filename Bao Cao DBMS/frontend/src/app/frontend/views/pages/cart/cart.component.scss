@@ -1,0 +1,32 @@
+a {
+  color: #ee4266;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.btn-outline-primary {
+  color: #ee4266;
+  background-color: transparent;
+  background-image: none;
+  border-color: #ee4266;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #ee4266;
+  border-color: #ee4266;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #ee4266;
+  border-color: #ee42;
+  font-size: 13px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #eb1f4a;
+  border-color: #e81541;
+}
